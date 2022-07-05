@@ -14,7 +14,7 @@ font:
   bold_italic:
     family: RobotoMono Nerd Font Mono
     style: Bold Italic
-  size: 10
+  size: 8
 
 color_schemes:
   latte: &latte
