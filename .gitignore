@@ -1,5 +1,7 @@
-*/*
-**/*
+/*
 
 !.gitignore
+!starship.toml
+!polybar
+
 !leftwm
