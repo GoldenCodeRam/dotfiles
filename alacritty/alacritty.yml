@@ -3,16 +3,16 @@ env:
 # Font configuration
 font:
   normal:
-    family: Iosevka Nerd Font Mono
-    style: Regular
+    family: CodeNewRoman Nerd Font Mono
+    style: Book
   bold:
-    family: Iosevka Nerd Font Mono
+    family: CodeNewRoman Nerd Font Mono
     style: Bold
   italic:
-    family: Iosevka Nerd Font Mono
+    family: CodeNewRoman Nerd Font Mono
     style: Italic
   bold_italic:
-    family: Iosevka Nerd Font Mono
+    family: CodeNewRoman Nerd Font Mono
     style: Bold Italic
   size: 10
 
