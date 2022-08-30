@@ -266,6 +266,12 @@ value = "9"
 modifier = ["modkey", "Shift"]
 key = "9"
 
+# Switch the focused window between floating and tiled mode.
+[[keybind]]
+command = "ToggleFloating"
+modifier = ["modkey"]
+key = "f"
+
 # Theme applets
 
 # Launcher
@@ -273,7 +279,7 @@ key = "9"
 command = "Execute"
 value = "$HOME/.config/leftwm/themes/current/scripts/launcher.sh"
 modifier = ["modkey"]
-key = "space"
+key = "d"
 
 # Powermenu
 [[keybind]]
