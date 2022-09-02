@@ -272,6 +272,12 @@ command = "ToggleFloating"
 modifier = ["modkey"]
 key = "f"
 
+# Toggle fullscreen
+[[keybind]]
+command = "ToggleFullScreen"
+modifier = ["modkey"]
+key = "space"
+
 # Theme applets
 
 # Launcher
