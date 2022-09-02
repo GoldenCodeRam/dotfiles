@@ -43,7 +43,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "gopls", "tsserver", "svelte", "pyright", "phpactor" }
+local servers = { "gopls", "tsserver", "svelte", "pyright"}
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
@@ -51,6 +51,14 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
+lspconfig.psalm.setup {
+    cmd = { "./vendor/bin/psalm-language-server" },
+    filetypes = { "php" },
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
 
 lspconfig["rust_analyzer"].setup {
     on_attach = on_attach,
