@@ -29,7 +29,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>fo', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>fo', vim.lsp.buf.format, bufopts)
 end
 
 local lsp_flags = {
@@ -42,44 +42,58 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { "gopls", "tsserver", "svelte", "pyright"}
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        on_attach = on_attach,
-        flags = lsp_flags,
-        capabilities = capabilities,
-    }
-end
 
-lspconfig.psalm.setup {
-    cmd = { "./vendor/bin/psalm-language-server" },
-    filetypes = { "php" },
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
-
-lspconfig["rust_analyzer"].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true
-            },
+require("mason-lspconfig").setup_handlers {
+    function (server_name)
+        lspconfig[server_name].setup {
+            on_attach = on_attach,
+            flags = lsp_flags,
+            capabilities = capabilities,
         }
-    },
+    end
 }
+
+-- local servers = { "gopls", "tsserver", "svelte", "pyright"}
+-- for _, lsp in ipairs(servers) do
+--     lspconfig[lsp].setup {
+--         on_attach = on_attach,
+--         flags = lsp_flags,
+--         capabilities = capabilities,
+--     }
+-- end
+-- 
+-- lspconfig.psalm.setup {
+--     cmd = { "./vendor/bin/psalm-language-server" },
+--     filetypes = { "php" },
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+--     capabilities = capabilities,
+-- }
+-- 
+-- lspconfig["rust_analyzer"].setup {
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+--     capabilities = capabilities,
+--     settings = {
+--         ["rust-analyzer"] = {
+--             imports = {
+--                 granularity = {
+--                     group = "module",
+--                 },
+--                 prefix = "self",
+--             },
+--             cargo = {
+--                 buildScripts = {
+--                     enable = true,
+--                 },
+--             },
+--             procMacro = {
+--                 enable = true
+--             },
+--         }
+--     },
+-- }
