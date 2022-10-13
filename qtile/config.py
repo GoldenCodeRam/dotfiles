@@ -4,14 +4,13 @@ import subprocess
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 from settings.keys import keys
 from settings.colors import colors
 from settings.screens import generateScreen1
 from settings.layouts import layouts
 
-terminal = guess_terminal()
+terminal = "alacritty"
 mod = "mod4"
 
 groups = [Group(i) for i in "123456790"]
@@ -44,7 +43,7 @@ screens = [
 ]
 
 widget_defaults = dict(
-    font="JetBrainsMono Nerd Font",
+    font="monospace",
     background=colors["base"],
     foreground=colors["text"],
     fontsize=12,
@@ -84,10 +83,10 @@ floating_layout = layout.Floating(
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = "floating_only"
 cursor_warp = False
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "focus"
 reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
@@ -102,7 +101,6 @@ wl_input_rules = None
 def autostart():
     home = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.call([home])
-
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
