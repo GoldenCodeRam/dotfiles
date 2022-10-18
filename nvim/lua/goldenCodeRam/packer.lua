@@ -1,51 +1,56 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
+return require("packer").startup(function(use)
     -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+    use("wbthomason/packer.nvim")
 
-    -- Colorscheme
-    use 'folke/tokyonight.nvim'
-    use 'sainnhe/everforest'
-
-    -- Trouble.nvim
-    use {
-        "folke/trouble.nvim",
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require("trouble").setup {
-            }
-        end
-    }
-
-    -- LSP
-    use 'mhartington/formatter.nvim'
-    use {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-    }
-
-    use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-    use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-    use 'L3MON4D3/LuaSnip' -- Snippets plugin
-
-    -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
+    -- Format
+    use("sbdchd/neoformat")
 
     -- Telescope
-    use 'nvim-lua/plenary.nvim'
-    use 'kyazdani42/nvim-web-devicons'
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    use("nvim-lua/plenary.nvim")
+    use("nvim-lua/popup.nvim")
+    use("nvim-telescope/telescope.nvim")
+
+    -- Lualine
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = {
+            "kyazdani42/nvim-web-devicons",
+            opt = true,
+        },
+    })
+
+    -- LSP
+    use({
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+    })
+    use("neovim/nvim-lspconfig")
+    use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
+    use("hrsh7th/nvim-cmp") -- Autocompletion plugin
+
+    -- Autocompletion
+    use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
+    use("L3MON4D3/LuaSnip") -- Snippets plugin
+
+    -- Colorscheme
+    use("folke/tokyonight.nvim")
+    use("sainnhe/everforest")
+    use("kyazdani42/nvim-web-devicons")
+
+    -- Trouble.nvim
+    use({
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup({})
+        end,
+    })
+
+    -- Treesitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+    })
 end)
