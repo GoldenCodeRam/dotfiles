@@ -1,0 +1,6 @@
+[submodule "leftwm/themes/catppuccin"]
+	path = leftwm/themes/catppuccin
+	url = https://github.com/di-effe/catppuccin.git
+[submodule "leftwm/leftwm-theme"]
+	path = leftwm/leftwm-theme
+	url = https://github.com/leftwm/leftwm-theme
