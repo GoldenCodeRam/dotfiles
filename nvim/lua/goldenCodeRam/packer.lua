@@ -4,6 +4,12 @@ return require("packer").startup(function(use)
 
     -- Format
     use("sbdchd/neoformat")
+    use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({})
+        end,
+    })
 
     -- Telescope
     use("nvim-lua/plenary.nvim")
