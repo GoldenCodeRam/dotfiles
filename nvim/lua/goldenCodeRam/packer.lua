@@ -10,6 +10,15 @@ return require("packer").startup(function(use)
             require("nvim-autopairs").setup({})
         end,
     })
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end,
+    })
 
     -- Telescope
     use("nvim-lua/plenary.nvim")
@@ -30,9 +39,18 @@ return require("packer").startup(function(use)
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     })
+
     use("neovim/nvim-lspconfig")
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+    })
+    use("onsails/lspkind.nvim")
+
     use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
     use("hrsh7th/nvim-cmp") -- Autocompletion plugin
+
+    use("mfussenegger/nvim-lint")
 
     -- Autocompletion
     use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
