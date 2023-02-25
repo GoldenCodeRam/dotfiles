@@ -1,3 +1,3 @@
-require("goldencoderam.packer")
+require("goldencoderam.lazy")
 require("goldencoderam.remap")
 require("goldencoderam.set")
