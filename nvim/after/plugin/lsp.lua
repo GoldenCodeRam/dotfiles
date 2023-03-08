@@ -3,6 +3,10 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
         "rust_analyzer",
+
+        -- Go
+        "gofumpt",
+        "gopls",
     },
 })
 
@@ -73,9 +77,22 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("mason-lspconfig").setup_handlers({
     function(server_name)
+        if server_name == "html" then
+            capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+            require("lspconfig")[server_name].setup({
+                on_attach = on_attach,
+                capabilities = capabilities
+            })
+        end
+
         require("lspconfig")[server_name].setup({
             on_attach = on_attach,
             capabilities = capabilities,
         })
     end,
 })
+
+-- Nvim autopairs nvim-cmp support
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
