@@ -9,7 +9,9 @@ local sources = {
     null_ls.builtins.formatting.prettier,
 
     --- Go
+    null_ls.builtins.formatting.golines,
     null_ls.builtins.formatting.gofumpt,
+    null_ls.builtins.formatting.goimports,
 }
 
 null_ls.setup({ sources = sources })

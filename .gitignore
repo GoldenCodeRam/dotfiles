@@ -6,3 +6,5 @@
 !wallpapers
 !tmux
 !alacritty
+
+/nvim/lazy-lock.json

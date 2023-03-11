@@ -5,8 +5,10 @@ require("mason-lspconfig").setup({
         "rust_analyzer",
 
         -- Go
-        "gofumpt",
         "gopls",
+        "golines",
+        "gofumpt",
+        "goimports-reviser",
     },
 })
 
