@@ -6,9 +6,10 @@ require("mason-lspconfig").setup({
 
         -- Go
         "gopls",
-        "golines",
         "gofumpt",
+        "goimports",
         "goimports-reviser",
+        "golines",
     },
 })
 
