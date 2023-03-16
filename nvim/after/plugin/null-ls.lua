@@ -13,6 +13,9 @@ local sources = {
     null_ls.builtins.formatting.goimports,
     null_ls.builtins.formatting.goimports_reviser,
     null_ls.builtins.formatting.golines,
+
+    -- Protobuf
+    null_ls.builtins.formatting.buf,
 }
 
 null_ls.setup({ sources = sources })
