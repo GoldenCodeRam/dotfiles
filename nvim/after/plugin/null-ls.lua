@@ -1,16 +1,20 @@
 local null_ls = require("null-ls")
 
 local sources = {
-    -- Base
+    -- Default
     null_ls.builtins.completion.luasnip,
     null_ls.builtins.formatting.stylua,
 
+    -- Rust
+    null_ls.builtins.formatting.rustfmt,
+
     -- Formatting
-    null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.formatting.eslint_d,
+    -- JavaScript, TypeScript
+    -- null_ls.builtins.formatting.prettierd,
+    -- null_ls.builtins.formatting.eslint_d,
 
     -- Python
-    null_ls.builtins.formatting.black,
+    -- null_ls.builtins.formatting.black,
 
     --- Go
     -- null_ls.builtins.formatting.gofumpt,

@@ -2,7 +2,9 @@ require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",
+        -- Rust
         "rust_analyzer",
+        "rustfmt",
 
         -- Go
         "gopls",
