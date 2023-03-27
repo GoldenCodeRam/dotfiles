@@ -1,21 +1,25 @@
 local null_ls = require("null-ls")
 
 local sources = {
+    -- Base
     null_ls.builtins.completion.luasnip,
+    null_ls.builtins.formatting.stylua,
 
     -- Formatting
-    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.eslint_d,
+
+    -- Python
     null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.prettier,
 
     --- Go
-    null_ls.builtins.formatting.gofumpt,
-    null_ls.builtins.formatting.goimports,
-    null_ls.builtins.formatting.goimports_reviser,
-    null_ls.builtins.formatting.golines,
+    -- null_ls.builtins.formatting.gofumpt,
+    -- null_ls.builtins.formatting.goimports,
+    -- null_ls.builtins.formatting.goimports_reviser,
+    -- null_ls.builtins.formatting.golines,
 
     -- Protobuf
-    null_ls.builtins.formatting.buf,
+    -- null_ls.builtins.formatting.buf,
 }
 
 null_ls.setup({ sources = sources })
