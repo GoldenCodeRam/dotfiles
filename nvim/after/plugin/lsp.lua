@@ -4,14 +4,8 @@ require("mason-lspconfig").setup({
         "lua_ls",
         -- Rust
         "rust_analyzer",
-        "rustfmt",
-
         -- Go
         "gopls",
-        "gofumpt",
-        "goimports",
-        "goimports-reviser",
-        "golines",
     },
 })
 
