@@ -28,6 +28,33 @@ require("lazy").setup({
         end,
     },
     {
+        -- This I feel is needed, as I sometimes forget the keys. This might
+        -- be disabled later, but I like it.
+        "folke/which-key.nvim",
+        lazy = true,
+    },
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            -- disable netrw at the very start of your init.lua (strongly advised)
+            vim.g.loaded_netrw = 1
+            vim.g.loaded_netrwPlugin = 1
+
+            -- set termguicolors to enable highlight groups
+            vim.opt.termguicolors = true
+
+            -- empty setup using defaults
+            require("nvim-tree").setup()
+        end,
+    },
+    {
+        "mbbill/undotree",
+        lazy = false,
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         lazy = false,
         build = function()
@@ -50,27 +77,7 @@ require("lazy").setup({
         end
     },
     {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            -- disable netrw at the very start of your init.lua (strongly advised)
-            vim.g.loaded_netrw = 1
-            vim.g.loaded_netrwPlugin = 1
-
-            -- set termguicolors to enable highlight groups
-            vim.opt.termguicolors = true
-
-            -- empty setup using defaults
-            require("nvim-tree").setup()
-        end,
-    },
-    {
-        -- This I feel is needed, as I sometimes forget the keys. This might
-        -- be disabled later, but I like it.
-        "folke/which-key.nvim",
-        lazy = true,
+        "tpope/vim-fugitive",
     },
     {
         -- LSP configuration
