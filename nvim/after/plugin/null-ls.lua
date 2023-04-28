@@ -27,6 +27,9 @@ local sources = {
 
     -- PHP
     null_ls.builtins.formatting.phpcsfixer,
+    null_ls.builtins.formatting.blade_formatter.with({
+        extra_filetypes = { "php" },
+    }),
 }
 
 null_ls.setup({ sources = sources })
