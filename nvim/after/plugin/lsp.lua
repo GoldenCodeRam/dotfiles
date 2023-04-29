@@ -83,6 +83,23 @@ require("mason-lspconfig").setup_handlers({
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
+            return
+        end
+
+        if server_name == "lua_ls" then
+            require("lspconfig")[server_name].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            -- get the language server to recognize the `vim` global
+                            globals = { "vim" },
+                        },
+                    },
+                },
+            })
+            return
         end
 
         require("lspconfig")[server_name].setup({

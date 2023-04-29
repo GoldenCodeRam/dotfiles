@@ -6,9 +6,8 @@ picom -b
 ~/.screenlayout/monitor.sh
 
 # Set wallpaper AFTER compositor.
-feh --bg-fill ~/.config/wallpapers
+feh --randomize --bg-fill ~/.config/wallpapers
 
 # Launch polybar.
-~/.config/polybar/launch.sh
-
-# 
+# Do not launch it from here, because we need to reload them some times
+# ~/.config/polybar/launch.sh
