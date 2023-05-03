@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-    vim.keymap.set("n", "<space>f", function()
+    vim.keymap.set({ "n", "v" }, "<space>f", function()
         vim.lsp.buf.format({ async = true })
     end, bufopts)
 end
@@ -57,7 +57,7 @@ cmp.setup({
         -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs( -4),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
@@ -81,8 +81,25 @@ require("mason-lspconfig").setup_handlers({
 
             require("lspconfig")[server_name].setup({
                 on_attach = on_attach,
-                capabilities = capabilities
+                capabilities = capabilities,
             })
+            return
+        end
+
+        if server_name == "lua_ls" then
+            require("lspconfig")[server_name].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            -- get the language server to recognize the `vim` global
+                            globals = { "vim" },
+                        },
+                    },
+                },
+            })
+            return
         end
 
         require("lspconfig")[server_name].setup({

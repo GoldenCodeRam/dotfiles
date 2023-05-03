@@ -16,15 +16,15 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 
 require("lazy").setup({
     {
-        "rose-pine/neovim",
-        name = "rose-pine",
+        "folke/tokyonight.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            require("rose-pine").setup({
-                disable_background = true,
+            require("tokyonight").setup({
+                transparent = true,
             })
-            vim.cmd("colorscheme rose-pine")
+            -- Lua
+            vim.cmd([[colorscheme tokyonight]])
         end,
     },
     {
@@ -66,6 +66,113 @@ require("lazy").setup({
                 separator = nil,
                 zindex = 20, -- The Z-index of the context window
             })
+        end,
+    },
+    {
+        "mbbill/undotree",
+        lazy = false,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        build = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                auto_install = true,
+                highlight = {
+                    enable = true,
+                },
+            })
+        end,
+    },
+    {
+        "windwp/nvim-autopairs",
+        lazy = false,
+        config = function()
+            require("nvim-autopairs").setup({})
+        end,
+    },
+    {
+        "tpope/vim-fugitive",
+    },
+    {
+        -- LSP configuration
+        "neovim/nvim-lspconfig",
+        lazy = true,
+        dependencies = {
+            -- LSP support
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+        },
+    },
+    {
+        -- Autocompletion
+        "hrsh7th/nvim-cmp",
+        lazy = false,
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            -- Snippets
+            --"hrsh7th/cmp-vsnip",
+            --"hrsh7th/vim-vsnip",
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+        },
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        lazy = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
+    {
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.1",
+        -- or                              , branch = '0.1.1',
+        dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = true,
+    },
+    {
+        -- Notifications, pretty cool.
+        "folke/noice.nvim",
+        lazy = false,
+        config = function()
+            -- Suggested setup.
+            require("noice").setup({
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                },
+                -- you can enable a preset for easier configuration
+                presets = {
+                    bottom_search = true, -- use a classic bottom cmdline for search
+                    command_palette = true, -- position the cmdline and popupmenu together
+                    long_message_to_split = true, -- long messages will be sent to a split
+                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = false, -- add a border to hover docs and signature help
+                },
+            })
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            -- This one is optional.
+            -- "rcarriga/nvim-notify",
+        },
+    },
+    {
+        "nvim-lualine/lualine.nvim",
+        lazy = false,
+        config = function()
+            require("lualine").setup({})
         end,
     },
     {

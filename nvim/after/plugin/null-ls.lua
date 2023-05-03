@@ -6,7 +6,7 @@ local sources = {
     null_ls.builtins.formatting.stylua,
 
     -- Rust
-    null_ls.builtins.formatting.rustfmt,
+    -- null_ls.builtins.formatting.rustfmt,
 
     -- Formatting
     -- JavaScript, TypeScript
@@ -14,7 +14,7 @@ local sources = {
     -- null_ls.builtins.formatting.eslint_d,
 
     -- Python
-    null_ls.builtins.formatting.black,
+    -- null_ls.builtins.formatting.black,
 
     --- Go
     -- null_ls.builtins.formatting.gofumpt,
@@ -26,7 +26,10 @@ local sources = {
     -- null_ls.builtins.formatting.buf,
 
     -- PHP
-    null_ls.builtins.formatting.phpcsfixer,
+    -- null_ls.builtins.formatting.phpcsfixer,
+    -- null_ls.builtins.formatting.blade_formatter.with({
+    --    extra_filetypes = { "php" },
+    -- }),
 }
 
 null_ls.setup({ sources = sources })
