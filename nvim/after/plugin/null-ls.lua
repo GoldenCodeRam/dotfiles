@@ -14,7 +14,7 @@ local sources = {
     -- null_ls.builtins.formatting.eslint_d,
 
     -- Python
-    -- null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.black,
 
     --- Go
     -- null_ls.builtins.formatting.gofumpt,
@@ -24,6 +24,9 @@ local sources = {
 
     -- Protobuf
     -- null_ls.builtins.formatting.buf,
+
+    -- PHP
+    null_ls.builtins.formatting.phpcsfixer,
 }
 
 null_ls.setup({ sources = sources })
