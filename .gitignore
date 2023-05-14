@@ -38,5 +38,20 @@ systemd/
 user-dirs*
 v4l2ucp/
 xfce4/
+.gsd-keyboard.settings-ported
+enchant/
+eog/
+evolution/
+gedit/
+gnome-control-center/
+gnome-initial-setup-done
+ibus/
+nautilus/
+pop-shell/
+pop-system-updater/
+psysh/
+qalculate/
+regolith2/
+touchegg/
 
 nvim/lazy-lock.json
