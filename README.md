@@ -15,10 +15,6 @@ I like to use `xrandr`, and after that, use `autorandr --save <name>` to set the
 
 I love [Legends of Runeterra](https://playruneterra.com/en-us/) artists, so all my wallpapers are from that.
 
-```config
-# Display Wallpaper
-exec_always feh --bg-fill --randomize /home/~/.config/wallpapers/*
-```
 ## 3. Lock screen
 
 Not that I personally use the lock screen, or that I care that much how it looks. But well...
@@ -39,4 +35,26 @@ sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfont
 git clone https://github.com/Raymo111/i3lock-color.git /tmp/i3lock-color
 cd /tmp/i3lock-color
 ./install-i3lock-color.sh
+```
+
+## 4. Set theme and other visual configuration
+
+For this, use `lxappearance`:
+```bash
+sudo apt install lxappearance
+```
+
+## 5. Compositor!
+
+For some reason, sometimes the compositor is not working for me, but I like the looks!
+
+```bash
+sudo apt install picom
+```
+
+## 6. Polybar
+
+I prefer Polybar, over i3blocks or i3bar.
+```bash
+sudo apt install polybar
 ```
