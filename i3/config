@@ -216,7 +216,6 @@ exec_always picom -f
 # Set floating for windows
 # I like spectacle or ksnip
 for_window [class=spectacle] floating enable
-
-# Atm I'm using kubuntu, so I want to leverage as much as possible of those
-# tools
-for_window [class=systemsettings] floating enable
+# For controlling the sound
+for_window [class=Pavucontrol] floating enable
+for_window [instance=Godot_Engine] floating enable
